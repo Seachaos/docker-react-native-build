@@ -4,4 +4,4 @@ services:
   - docker
 
 before_install:
-  - docker build -t react-native-build .
+  - docker build -t react-native-build . > build.log 2>&1
