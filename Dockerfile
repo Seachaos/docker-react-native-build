@@ -26,7 +26,15 @@ ENV PATH=$PATH:$ANDROID_HOME/platform-tools
 # install android sdk
 RUN yes | sdkmanager --licenses
 RUN sdkmanager --update
+RUN android update sdk -u --filter platform-tools,android-23 --use-sdk-wrapper
+RUN android update sdk -u --filter platform-tools,android-26 --use-sdk-wrapper
 RUN android update sdk -u --filter platform-tools,android-27 --use-sdk-wrapper
+RUN android update sdk -u --filter platform-tools,android-28 --use-sdk-wrapper
+RUN android update sdk -u --filter extra-android-m2repository --use-sdk-wrapper
+RUN yes | sdkmanager "build-tools;23.0.0"
+RUN yes | sdkmanager "build-tools;26.0.3"
+RUN yes | sdkmanager "build-tools;27.0.3"
+RUN yes | sdkmanager "build-tools;28.0.3"
 
 # install node
 ENV NVM_DIR=/root/.nvm
